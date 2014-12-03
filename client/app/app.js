@@ -1,1 +1,3 @@
-angular.module('BS',[]);
+angular.module('BS',[
+  'BS.welcome'
+]);
