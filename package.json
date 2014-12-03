@@ -1,0 +1,37 @@
+{
+  "name": "brainStormer",
+  "version": "1.0.0",
+  "description": "brainstorming app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/drabinowitz/brainStormer"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/drabinowitz/brainStormer/issues"
+  },
+  "homepage": "https://github.com/drabinowitz/brainStormer",
+  "devDependencies": {
+    "browser-sync": "^1.7.2",
+    "expect.js": "^0.3.1",
+    "gulp": "^3.8.10",
+    "gulp-nodemon": "^1.0.4",
+    "gulp-shell": "^0.2.11",
+    "jasmine-core": "^2.1.2",
+    "karma": "^0.12.28",
+    "karma-chrome-launcher": "^0.1.5",
+    "karma-cli": "0.0.4",
+    "karma-jasmine": "^0.3.2",
+    "karma-mocha": "^0.1.9",
+    "karma-nested-reporter": "^0.1.3",
+    "karma-nyan-reporter": "0.0.50",
+    "karma-phantomjs-launcher": "^0.1.4",
+    "karma-unicorn-reporter": "^0.1.4",
+    "mocha": "^2.0.1"
+  }
+}
