@@ -8,9 +8,7 @@ angular.module('BS.rooms.room',[
 
   $scope.newPost = {};
 
-  room.get($stateParams.roomId).then(function(room){
-    $scope.room = room;
-  });
+  $scope.room = room.get($stateParams.roomId);
 
   $scope.addUser = function(){
     room.addUser($scope.you).then(function(userId){
@@ -26,23 +24,19 @@ angular.module('BS.rooms.room',[
 
 }])
 
-.factory('room',[function(){
+.factory('room',['Rooms',function(Rooms){
 
-  var room = {
+/*  var room = {
 
     name: 'New Room',
     idea: 'New Idea',
     users: []
 
-  };
+  };*/
 
   return {
-    get:function(){
-      return {
-        then: function(cb){
-          cb(room);
-        }
-      };
+    get:function(roomId){
+      return Rooms.getRoom(roomId);
     },
 
     addUser:function(user){

@@ -25,30 +25,25 @@ angular.module('BS.welcome',[])
   $scope.addRoom = function(formIsValid){
     if (formIsValid){
       $scope.loading = true;
-      welcome.addRoom($scope.newRoom.name,$scope.newRoom.idea).then(function(roomId){
+      welcome.addRoom({
+        name: $scope.newRoom.name,
+        idea: $scope.newRoom.idea
+      }).then(function(roomId){
         $scope.roomId = roomId;
-      $timeout(function(){
-          $scope.loading = false;
-          $scope.newRoom = {};
-        },3000);
+        $scope.loading = false;
+        $scope.newRoom = {};
       });
     }
   };
 
 }])
 
-.factory('welcome',['$timeout',function($timeout){
-
-  var roomId = '11111';
+.factory('welcome',['Rooms',function(Rooms){
 
   return {
 
-    addRoom: function(){
-      return {
-        then: function(cb){
-          cb(roomId);
-        }
-      };
+    addRoom: function(room){
+      return Rooms.addRoom(room);
     }
 
   };

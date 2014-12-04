@@ -1,6 +1,7 @@
 angular.module('BS',[
   'ui.router',
   'ngFx',
+  'BS.services',
   'BS.welcome',
   'BS.rooms.room'
 ])

@@ -8,7 +8,7 @@ angular.module('BS.services', ['firebase'])
 
     return rooms.$add(roomInfo)
     .then(function(newChildRef) {
-      return newChildRef.$id;
+      return newChildRef.key();
     })
     .catch(function(data) {
       console.log('IN THE CATCH')
