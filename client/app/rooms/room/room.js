@@ -26,20 +26,16 @@ angular.module('BS.rooms.room',[
 
 .factory('room',['Rooms',function(Rooms){
 
-/*  var room = {
-
-    name: 'New Room',
-    idea: 'New Idea',
-    users: []
-
-  };*/
+  var room;
 
   return {
     get:function(roomId){
-      return Rooms.getRoom(roomId);
+      room = Rooms.getRoom(roomId);
+      return room;
     },
 
     addUser:function(user){
+      room.users = [];
       room.users.push(user);
       return {
         then: function(cb){

@@ -1,9 +1,27 @@
 describe('room.js',function(){
 
   describe('room factory',function(){
-    var room,mockUser,mockPost;
+    var room,Rooms,mockRoom,mockUser,mockPost;
 
     beforeEach(module('BS'));
+    beforeEach(function(){
+
+      mockRoom = {
+        name:'name',
+        idea:'test'
+      };
+
+      Rooms = {
+        getRoom:function(roomId){
+          return mockRoom;
+        }
+      };
+
+      module(function($provide){
+        $provide.value('Rooms',Rooms);
+      });
+    });
+
     beforeEach(inject(function($injector){
       room = $injector.get('room');
 
@@ -11,13 +29,8 @@ describe('room.js',function(){
       mockPost = {'body':'text'};
     }));
 
-    it('should load the relevant data for a room',function(done){
-      room.get('11111').then(function(room){
-        expect(room.name).to.equal('New Room');
-        expect(room.idea).to.equal('New Idea');
-        expect(room.users).to.eql([]);
-        done();
-      });
+    it('should load the relevant data for a room',function(){
+      expect(room.get()).to.equal(mockRoom);
     });
 
     it('should add users to a room',function(done){
@@ -59,7 +72,7 @@ describe('room.js',function(){
       mockUserId = 0;
 
       room = {
-        get:function(){return {then: function(cb){cb(mockRoom);}};},
+        get:function(){return mockRoom;},
         addUser:function(user){
           mockRoom.users.push(user);
           return {then: function(cb){cb(mockUserId);}};
