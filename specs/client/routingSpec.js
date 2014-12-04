@@ -9,6 +9,10 @@ describe('routing',function(){
     expect($state.get('welcome')).to.be.ok();
     expect($state.get('welcome').controller).to.be('welcomeController');
     expect($state.get('welcome').templateUrl).to.be('app/welcome/welcome.html');
+    expect($state.get('rooms')).to.be.ok();
+    expect($state.get('rooms.room')).to.be.ok();
+    expect($state.get('rooms.room').controller).to.be('roomController');
+    expect($state.get('rooms.room').templateUrl).to.be('app/rooms/room/room.html');
   });
 
 });

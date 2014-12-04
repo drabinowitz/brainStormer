@@ -3,7 +3,7 @@
     <h1 class="fx-fade-down fx-speed-500 fx-easing-back" ng-show="welcomeMessage">{{ welcomeMessage }}</h1>
   </div>
   <div class="row">
-    <div class="popup fx-zoom-up fx-speed-500 fx-easing-back" ng-show="roomId"><a ui-sref="rooms.rooms({roomId:roomId})">Here's Your Room! http://localhost/#/rooms/{{roomId}}</a></div>
+    <div class="popup fx-zoom-up fx-speed-500 fx-easing-back" ng-show="roomId"><a ui-sref="rooms.room({roomId:roomId})">Here's Your Room! http://localhost/#/rooms/{{roomId}}</a></div>
     <div class="popup fx-zoom-up fx-speed-500 fx-easing-back" ng-show="loading"><img src="resources/ajax-loader.gif" alt=""></div>
     <form ng-show="roomForm"
           ng-class="{'fx-fade-down':animating,'fx-speed-500':animating,'fx-easing-back':animating}"

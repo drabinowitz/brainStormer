@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="jumbotron fx-fade-down fx-speed-500 fx-easing-back" ng-show="room">
+    <h1>{{room.name}}</h1>
+    <h2>{{room.idea}}</h1>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <input type="text" placeholder="filter users" ng-model="search">
+    </div>
+  </div>
+  <div class="row fx-zoom-up fx-speed-500 fx-easing-back" ng-repeat="user in room.users | filter:search"></div>
+</div>
