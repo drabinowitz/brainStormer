@@ -1,6 +1,6 @@
 angular.module('BS.services', ['firebase'])
 
-.factory('Rooms', function($firebase){
+.factory('Rooms', ['$firebase', function($firebase){
   var addRoom = function(roomInfo) {
     var ref = new Firebase('https://resplendent-inferno-1306.firebaseio.com/rooms');
     var sync = $firebase(ref);
@@ -26,9 +26,9 @@ angular.module('BS.services', ['firebase'])
     addRoom: addRoom,
     getRoom: getRoom
   };
-})
+}])
 
-.factory('Users', function($firebase) {
+.factory('Users', ['$firebase', function($firebase) {
   var addUser = function(userInfo, roomId) {
     var ref = new Firebase('https://resplendent-inferno-1306.firebaseio.com/rooms/' + roomId + '/users');
     var sync = $firebase(ref);
@@ -54,4 +54,4 @@ angular.module('BS.services', ['firebase'])
     addUser: addUser,
     getUser: getUser
   };
-})
+}])
