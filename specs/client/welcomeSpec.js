@@ -1,9 +1,27 @@
 describe('welcome.js',function(){
   describe('welcome factory',function(){
 
-    var welcome;
+    var welcome,Rooms,mockRoomId;
 
     beforeEach(module('BS'));
+    beforeEach(function(){
+
+      mockRoomId = '11111';
+
+      Rooms = {
+        addRoom:function(room){
+          return {
+            then:function(cb){cb(mockRoomId);}
+          };
+        }
+      };
+
+      module(function($provide){
+        $provide.value('Rooms',Rooms);
+      });
+
+    });
+
     beforeEach(inject(function($injector){
       welcome = $injector.get('welcome');
     }));

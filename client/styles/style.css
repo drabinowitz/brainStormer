@@ -1,6 +1,7 @@
 .view-wrapper {
   margin-top: 58px;
 }
+
 input.room-input {
   width: 100%;
   height: 100px;
@@ -52,17 +53,40 @@ input.error-field {
   font-size: 24px;
 }
 
+.filter-users {
+  height: 70px;
+  font-size: 30px;
+  width: 50%;
+  min-width: 300px;
+}
+
+.user-space {
+  border: 1px solid rgba(128, 128, 128, 0.57);
+  padding-bottom: 20px;
+  margin-top: 20px;
+  border-radius: 5px;
+}
+
+.post-body {
+  margin-left: 15px;
+  margin-right: 15px;
+  background-color: #eee;
+  padding: 4px;
+}
+
 input.post-input {
-  height: 50px;
-  width: 80%;
-  min-width: 260px;
+  height: 70px;
+  width: 70%;
+  min-width: 236px;
   float: left;
   /* border-right: none; */
+  font-size: 30px;
 }
 
 button.new-post-button {
   float: left;
   border-top-left-radius: 0px;
   border-bottom-left-radius: 0px;
-  height: 50px;
+  height: 70px;
+  font-size: 30px;
 }
