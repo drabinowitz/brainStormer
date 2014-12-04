@@ -8,5 +8,49 @@
       <input type="text" placeholder="filter users" ng-model="search">
     </div>
   </div>
-  <div class="row fx-zoom-up fx-speed-500 fx-easing-back" ng-repeat="user in room.users | filter:search"></div>
+  <button class="btn btn-lg btn-success" ng-click="you.name='dmitri';addUser()">
+    Add User
+  </button>
+  <div class="row fx-zoom-up fx-speed-500 fx-easing-back"
+       ng-repeat="user in room.users | filter:search">
+
+    <div class="col-md-12">
+      <h2>{{ user.name }}</h2>
+    </div>
+
+    <div class="col-md-12 row fx-zoom-up fx-speed-500 fx-easing-back"
+         ng-repeat="post in user.posts">
+      <h3>{{ post.body }}</h3>
+    </div>
+
+    <div class="col-md-12"
+         ng-if="you.name===user.name">
+
+      <form name="newPostForm"
+            ng-submit="addPost(newPostForm.$valid);newPostForm.$setPristine()"
+            novalidate>
+
+        <input type="text"
+               class="post-input post-input-body"
+               name="postBody"
+               ng-class="{'error-field':newPostForm.postBody.$error.required && newPostForm.postBody.$dirty}"
+               ng-model="newPost.body"
+               placeholder="Post an Idea!"
+               required>
+
+        <button class="btn btn-md btn-primary new-post-button"
+                ng-disabled="newPostForm.$invalid"
+                type="submit">
+          Post
+        </button>
+
+      </form>
+
+    <div class="col-md-12 error"
+         ng-show="newPostForm.postBody.$error.required && newPostForm.postBody.$dirty">
+      <h5>Post Must Have Body!</h5>
+    </div>
+
+    </div>
+  </div>
 </div>

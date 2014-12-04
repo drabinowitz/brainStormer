@@ -29,7 +29,6 @@ angular.module('BS.welcome',[])
         $scope.roomId = roomId;
       $timeout(function(){
           $scope.loading = false;
-          $scope.newRoomForm.$setPristine();
           $scope.newRoom = {};
         },3000);
       });

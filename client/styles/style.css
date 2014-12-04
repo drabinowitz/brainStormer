@@ -19,7 +19,7 @@ button.new-room-button {
   font-size: 40px;
 }
 
-input.room-input.error-field {
+input.error-field {
   box-shadow: 1px 1px 10px red;
 }
 
@@ -50,4 +50,19 @@ input.room-input.error-field {
   height: 200px;
   padding-top: 67px;
   font-size: 24px;
+}
+
+input.post-input {
+  height: 50px;
+  width: 80%;
+  min-width: 260px;
+  float: left;
+  /* border-right: none; */
+}
+
+button.new-post-button {
+  float: left;
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+  height: 50px;
 }

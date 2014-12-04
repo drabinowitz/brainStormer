@@ -9,7 +9,7 @@
           ng-class="{'fx-fade-down':animating,'fx-speed-500':animating,'fx-easing-back':animating}"
           class="fx-trigger"
           name="newRoomForm"
-          ng-submit='addRoom(newRoomForm.$valid)'
+          ng-submit='addRoom(newRoomForm.$valid);newRoomForm.$setPristine()'
           novalidate>
 
       <div class="col-md-12">
@@ -38,7 +38,7 @@
         <button class="btn btn-lg btn-primary new-room-button"
                 ng-disabled="newRoomForm.$invalid"
                 type="submit">
-                  brainStorm It!
+          brainStorm It!
         </button>
       </div>
 
