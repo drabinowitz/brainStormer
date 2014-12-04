@@ -1,6 +1,6 @@
 angular.module('BS.services', ['firebase'])
 
-.factory('Rooms', function($firebase){
+.factory('Rooms', ['$firebase', function($firebase){
   var addRoom = function(roomInfo) {
     var ref = new Firebase('https://resplendent-inferno-1306.firebaseio.com/rooms');
     var sync = $firebase(ref);
@@ -11,9 +11,8 @@ angular.module('BS.services', ['firebase'])
       return newChildRef.key();
     })
     .catch(function(data) {
-      console.log('IN THE CATCH')
-      console.error(data)
-    })
+      console.error(data);
+    });
   };
 
   var getRoom = function(roomId) {
@@ -27,4 +26,32 @@ angular.module('BS.services', ['firebase'])
     addRoom: addRoom,
     getRoom: getRoom
   };
-})
+}])
+
+.factory('Users', ['$firebase', function($firebase) {
+  var addUser = function(userInfo, roomId) {
+    var ref = new Firebase('https://resplendent-inferno-1306.firebaseio.com/rooms/' + roomId + '/users');
+    var sync = $firebase(ref);
+    var users = sync.$asArray();
+
+    return users.$add(userInfo)
+    .then(function(newChildRef) {
+      return newChildRef.key();
+    })
+    .catch(function(data) {
+      console.error(data);
+    });
+  };
+
+  var getUser = function(roomId, userId) {
+    var ref = new Firebase('https://resplendent-inferno-1306.firebaseio.com/rooms/'+ roomId + 'users/' + userId);
+    var user = $firebase(ref).$asObject();
+
+    return user;
+  };
+
+  return {
+    addUser: addUser,
+    getUser: getUser
+  };
+}])
