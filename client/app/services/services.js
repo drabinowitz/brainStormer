@@ -16,7 +16,15 @@ angular.module('BS.services', ['firebase'])
     })
   };
 
+  var getRoom = function(roomId) {
+    var ref = new Firebase('https://resplendent-inferno-1306.firebaseio.com/rooms/' + roomId);
+    var room = $firebase(ref).$asObject();
+
+    return room;
+  };
+
   return {
-    addRoom: addRoom
+    addRoom: addRoom,
+    getRoom: getRoom
   };
 })
