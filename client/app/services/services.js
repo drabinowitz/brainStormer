@@ -27,3 +27,31 @@ angular.module('BS.services', ['firebase'])
     getRoom: getRoom
   };
 })
+
+.factory('Users', function($firebase) {
+  var addUser = function(userInfo, roomId) {
+    var ref = new Firebase('https://resplendent-inferno-1306.firebaseio.com/rooms/' + roomId + '/users');
+    var sync = $firebase(ref);
+    var users = sync.$asArray();
+
+    return users.$add(userInfo)
+    .then(function(newChildRef) {
+      return newChildRef.key();
+    })
+    .catch(function(data) {
+      console.error(data);
+    });
+  };
+
+  var getUser = function(roomId, userId) {
+    var ref = new Firebase('https://resplendent-inferno-1306.firebaseio.com/rooms/'+ roomId + 'users/' + userId);
+    var user = $firebase(ref).$asObject();
+
+    return user;
+  };
+
+  return {
+    addUser: addUser,
+    getUser: getUser
+  };
+})
