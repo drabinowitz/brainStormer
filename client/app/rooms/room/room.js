@@ -12,6 +12,8 @@ angular.module('BS.rooms.room',[
 
   $scope.users = room.users.get($stateParams.roomId);
 
+  $scope.posts = room.posts.get($stateParams.roomId);
+
   $scope.addUser = function(){
     room.users.add($scope.you).then(function(userId){
       $scope.you.id = userId;
@@ -19,18 +21,20 @@ angular.module('BS.rooms.room',[
   };
 
   $scope.addPost = function(formIsValid){
-    room.addPost($scope.you.id,$scope.newPost).then(function(postId){
+    room.posts.add($scope.you.id,$scope.newPost).then(function(postId){
       $scope.newPost = {};
     });
   };
 
 }])
 
-.factory('room',['Rooms','Users',function(Rooms,Users){
+.factory('room',['Rooms','Users','Posts',function(Rooms,Users,Posts){
 
   var room;
 
   var users;
+
+  var posts;
 
   return {
     get:function(roomId){
@@ -47,15 +51,15 @@ angular.module('BS.rooms.room',[
       }
     },
 
-    addPost:function(userId,post){
-      room.users[userId].posts.push(post);
-      return {
-        then: function(cb){
-          cb(room.users[userId].posts.length-1);
-        }
-      };
+    posts: {
+      get: function(roomId) {
+        return Posts.get(roomId);
+      },
+      add: function(userId, post) {
+        post.userId = userId;
+        return Posts.add(post);
+      }
     }
-
   };
 
 }]);
