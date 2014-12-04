@@ -12,15 +12,15 @@ angular.module('BS.welcome',[])
 
   $timeout(function(){
     $scope.welcomeMessage = 'Welcome to brainStormer!';
-  },100);
+  },600);
 
   $timeout(function(){
     $scope.roomForm = true;
-  },400);
+  },900);
 
   $timeout(function(){
     $scope.animating = false;
-  },410);
+  },910);
 
   $scope.addRoom = function(formIsValid){
     if (formIsValid){
