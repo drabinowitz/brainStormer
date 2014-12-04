@@ -29,11 +29,9 @@ angular.module('BS.services', ['firebase'])
 }])
 
 .factory('Users', ['$firebase', function($firebase) {
-  var addUser = function(userInfo, roomId) {
-    var ref = new Firebase('https://resplendent-inferno-1306.firebaseio.com/rooms/' + roomId + '/users');
-    var sync = $firebase(ref);
-    var users = sync.$asArray();
+  var users;
 
+  var add = function(userInfo) {
     return users.$add(userInfo)
     .then(function(newChildRef) {
       return newChildRef.key();
@@ -43,15 +41,15 @@ angular.module('BS.services', ['firebase'])
     });
   };
 
-  var getUser = function(roomId, userId) {
-    var ref = new Firebase('https://resplendent-inferno-1306.firebaseio.com/rooms/'+ roomId + 'users/' + userId);
-    var user = $firebase(ref).$asObject();
+  var get = function(roomId) {
+    var ref = new Firebase('https://resplendent-inferno-1306.firebaseio.com/rooms/'+ roomId + '/users');
+    users = $firebase(ref).$asArray();
 
-    return user;
+    return users;
   };
 
   return {
-    addUser: addUser,
-    getUser: getUser
+    add: add,
+    get: get
   };
 }])
