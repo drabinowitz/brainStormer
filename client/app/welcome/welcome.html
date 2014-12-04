@@ -1,4 +1,56 @@
 <div class="container">
+  <div class="jumbotron">
+    <h1 class="fx-fade-down fx-speed-500 fx-easing-back" ng-show="welcomeMessage">{{ welcomeMessage }}</h1>
+  </div>
   <div class="row">
+    <form ng-show="roomForm"
+          ng-class="{'fx-fade-down':animating,'fx-speed-500':animating,'fx-easing-back':animating}"
+          class="fx-trigger"
+          name="newRoomForm"
+          ng-submit='addRoom(newRoomForm.$valid)'
+          novalidate>
+
+      <div class="col-md-12">
+        <input class="room-input room-input-name"
+               ng-class="{'error-field':newRoomForm.roomName.$error.required && newRoomForm.roomName.$dirty}"
+               name="roomName"
+               type="text"
+               ng-model="newRoom.name"
+               placeholder="Room Name"
+               required
+               autofocus>
+      </div>
+
+      <div class="col-md-12">
+        <input class="room-input room-input-name"
+               ng-class="{'error-field':newRoomForm.roomIdea.$error.required && newRoomForm.roomIdea.$dirty}"
+               name="roomIdea"
+               type="text"
+               ng-model="newRoom.idea"
+               placeholder="Idea to Discuss"
+               required>
+      </div>
+
+
+      <div class="col-md-12">
+        <button class="btn btn-lg btn-primary new-room-button"
+                ng-disabled="newRoomForm.$invalid"
+                type="submit">
+                  brainStorm It!
+        </button>
+      </div>
+
+    </form>
+
+    <div class="col-md-12 error"
+         ng-show="newRoomForm.roomName.$error.required && newRoomForm.roomName.$dirty">
+           <h5>Room Name is required!</h5>
+    </div>
+
+    <div class="col-md-12 error"
+         ng-show="newRoomForm.roomIdea.$error.required && newRoomForm.roomIdea.$dirty">
+           <h5>Room Idea is required!</h5>
+    </div>
+
   </div>
 </div>

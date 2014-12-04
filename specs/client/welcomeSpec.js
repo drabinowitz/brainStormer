@@ -18,12 +18,13 @@ describe('welcome.js',function(){
 
   describe('welcomeController',function(){
 
-    var $scope,$rootScope,$controller,welcome,createController,mockRoomId;
+    var $scope,$rootScope,$timeout,$controller,welcome,createController,mockRoomId;
 
     beforeEach(module('BS'));
     beforeEach(inject(function($injector){
       $rootScope = $injector.get('$rootScope');
       $scope = $rootScope.$new();
+      $timeout = $injector.get('$timeout');
       $controller = $injector.get('$controller');
       mockRoomId = '11111';
       welcome = {
@@ -33,6 +34,7 @@ describe('welcome.js',function(){
       createController = function(){
         return $controller('welcomeController',{
           $scope:$scope,
+          $timeout:$timeout,
           welcome:welcome
         });
       };

@@ -1,13 +1,34 @@
 angular.module('BS.welcome',[])
 
-.controller('welcomeController',['$scope','welcome',function($scope,welcome){
+.controller('welcomeController',['$scope','$timeout','welcome',function($scope,$timeout,welcome){
+
+  $scope.animating = true;
+
+/*  $scope.$on('fade-down:enter',function(){
+    $scope.animating = false;
+  });*/
 
   $scope.newRoom = {};
 
+  $timeout(function(){
+    $scope.welcomeMessage = 'Welcome to brainStormer!';
+  },100);
+
+  $timeout(function(){
+    $scope.roomForm = true;
+  },400);
+
+  $timeout(function(){
+    $scope.animating = false;
+  },400);
+
   $scope.addRoom = function(formIsValid){
     if (formIsValid){
-      welcome.addRoom($scope.newRoom.name).then(function(roomId){
+      $scope.loading = true;
+      welcome.addRoom($scope.newRoom.name,$scope.newRoom.idea).then(function(roomId){
         $scope.roomId = roomId;
+        $scope.loading = false;
+        $scope.newRoom = {};
       });
     }
   };
