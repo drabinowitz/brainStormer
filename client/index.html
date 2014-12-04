@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="BS">
+<head>
+  <meta charset="UTF-8">
+  <title>brainStormer</title>
+  <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.css">
+  <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+  <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">brainStormer</a>
+      </div>
+    </div>
+  </nav>
+  <div ui-view class="fx-fade-left fx-speed-500 fx-easing-back view-wrapper"></div>
+
+  <script src="lib/angular/angular.js"></script>
+  <script src="lib/angular-ui-router/release/angular-ui-router.js"></script>
+  <script src="lib/ngFx/dist/ngFx.js"></script>
+  <script src="lib/firebase/firebase.js"></script>
+  <script src="lib/angularfire/dist/angularfire.js"></script>
+  <script src="app/app.js"></script>
+  <script src="app/services/services.js"></script>
+  <script src="app/welcome/welcome.js"></script>
+  <script src="app/rooms/room/room.js"></script>
+</body>
+</html>
