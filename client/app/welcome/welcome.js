@@ -20,22 +20,25 @@ angular.module('BS.welcome',[])
 
   $timeout(function(){
     $scope.animating = false;
-  },400);
+  },410);
 
   $scope.addRoom = function(formIsValid){
     if (formIsValid){
       $scope.loading = true;
       welcome.addRoom($scope.newRoom.name,$scope.newRoom.idea).then(function(roomId){
         $scope.roomId = roomId;
-        $scope.loading = false;
-        $scope.newRoom = {};
+      $timeout(function(){
+          $scope.loading = false;
+          $scope.newRoomForm.$setPristine();
+          $scope.newRoom = {};
+        },3000);
       });
     }
   };
 
 }])
 
-.factory('welcome',[function(){
+.factory('welcome',['$timeout',function($timeout){
 
   var roomId = '11111';
 
