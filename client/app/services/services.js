@@ -53,3 +53,30 @@ angular.module('BS.services', ['firebase'])
     get: get
   };
 }])
+
+.factory('Posts', ['$firebase', function($firebase) {
+  var posts;
+
+  var add = function(postInfo) {
+    // postInfo should have userId and body
+    return posts.$add(postInfo)
+    .then(function(newChildRef) {
+      return newChildRef.key();
+    })
+    .catch(function(error) {
+      console.error(error);
+    });
+  };
+
+  var get = function(roomId) {
+    var ref = new Firebase('https://resplendent-inferno-1306.firebaseio.com/rooms/'+ roomId);
+    posts = $firebase(ref).$asArray();
+
+    return posts;
+  };
+
+  return {
+    add: add,
+    get: get
+  };
+}])
