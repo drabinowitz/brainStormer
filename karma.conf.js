@@ -20,6 +20,8 @@ module.exports = function(config) {
     'client/lib/angular-ui-router/release/angular-ui-router.js',
     'client/lib/ngFx/dist/ngFx.js',
     'client/lib/angular-mocks/angular-mocks.js',
+    'client/lib/angularfire/dist/angularfire.js',
+    'client/lib/firebase/firebase.js',
 
     //app code
     'client/app/**/*.js',
