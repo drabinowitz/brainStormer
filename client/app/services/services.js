@@ -11,9 +11,8 @@ angular.module('BS.services', ['firebase'])
       return newChildRef.key();
     })
     .catch(function(data) {
-      console.log('IN THE CATCH')
-      console.error(data)
-    })
+      console.error(data);
+    });
   };
 
   var getRoom = function(roomId) {
