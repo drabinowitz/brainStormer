@@ -25,7 +25,7 @@
       <h2 class="post-body">{{ post.body }}</h2>
 
       <button class="post-vote-button btn btn-md btn-success"
-              ng-if="!upvoted[post.$id] && you.id !== user.$id"
+              ng-if="you.id && !upvoted[post.$id] && you.id !== user.$id"
               ng-click="addVote(post.$id)">
         Like
       </button>
