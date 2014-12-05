@@ -59,6 +59,7 @@ angular.module('BS.services', ['firebase'])
 
   var add = function(postInfo) {
     // postInfo should have userId and body
+    postInfo.votes = 0;
     return posts.$add(postInfo)
     .then(function(newChildRef) {
       return newChildRef.key();
@@ -73,6 +74,32 @@ angular.module('BS.services', ['firebase'])
     posts = $firebase(ref).$asArray();
 
     return posts;
+  };
+
+  return {
+    add: add,
+    get: get
+  };
+}])
+
+.factory('Votes', ['$firebase', function($firebase) {
+  var votes;
+
+  var add = function(voteInfo) {
+    return votes.$add(voteInfo)
+    .then(function(newChildRef) {
+      return newChildRef.key();
+    })
+    .catch(function(error) {
+      console.error(error);
+    })
+  };
+
+  var get = function(roomId) {
+    var ref = new Firebase('https://resplendent-inferno-1306.firebaseio.com/rooms/' + roomId + '/votes');
+    votes = $firebase(ref).$asArray();
+
+    return votes;
   };
 
   return {
