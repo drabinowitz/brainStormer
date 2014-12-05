@@ -90,3 +90,13 @@ button.new-post-button {
   height: 70px;
   font-size: 30px;
 }
+
+button.post-vote-button {
+  position: absolute;
+  right: -36px;
+  top: 20px;
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+  height: 41px;
+  font-size: 22px;
+}
