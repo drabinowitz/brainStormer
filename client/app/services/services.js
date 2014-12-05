@@ -69,7 +69,7 @@ angular.module('BS.services', ['firebase'])
   };
 
   var get = function(roomId) {
-    var ref = new Firebase('https://resplendent-inferno-1306.firebaseio.com/rooms/'+ roomId);
+    var ref = new Firebase('https://resplendent-inferno-1306.firebaseio.com/rooms/'+ roomId + '/posts');
     posts = $firebase(ref).$asArray();
 
     return posts;
