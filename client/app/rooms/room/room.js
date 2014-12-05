@@ -33,7 +33,7 @@ angular.module('BS.rooms.room',[
 
   $scope.addVote = function(postId) {
     room.votes.add($scope.you.id, postId).then(function(voteId) {
-      $scope.upvoted = { postId: true };
+      $scope.upvoted[postId] = true;
     });
     var postPlace = $scope.posts.$indexFor(postId);
     $scope.posts[postPlace].votes++;
@@ -79,6 +79,7 @@ angular.module('BS.rooms.room',[
         return Votes.get(roomId);
       },
       add: function(userId, postId) {
+        vote = {};
         vote.userId = userId;
         vote.postId = postId;
         return Votes.add(vote);
