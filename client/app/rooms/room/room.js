@@ -17,12 +17,13 @@ angular.module('BS.rooms.room',[
   $scope.addUser = function(){
     room.users.add($scope.you).then(function(userId){
       $scope.you.id = userId;
+      $scope.newPost.userId = userId;
     });
   };
 
   $scope.addPost = function(formIsValid){
     room.posts.add($scope.you.id,$scope.newPost).then(function(postId){
-      $scope.newPost = {};
+      $scope.newPost = {userId:$scope.newPost.userId};
     });
   };
 
