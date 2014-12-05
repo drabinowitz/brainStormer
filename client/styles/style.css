@@ -2,6 +2,10 @@
   margin-top: 58px;
 }
 
+.nav.navbar-nav.navbar-right * {
+  margin-top: 10px;
+}
+
 input.room-input {
   width: 100%;
   height: 100px;
