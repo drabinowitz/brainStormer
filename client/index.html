@@ -6,11 +6,15 @@
   <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.css">
   <link rel="stylesheet" href="styles/style.css">
 </head>
-<body>
+<body ng-controller="AuthController">
   <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
     <div class="container">
       <div class="navbar-header">
         <a class="navbar-brand" href="#">brainStormer</a>
+      </div>
+      <div class="nav navbar-nav navbar-right">
+        <button ng-click="newLogin()" ng-hide="login.username" class="btn btn-sm btn-default">Sign In with Github</button>
+        <a ng-show="login.username" href="#">{{login.username}}</a>
       </div>
     </div>
   </nav>
