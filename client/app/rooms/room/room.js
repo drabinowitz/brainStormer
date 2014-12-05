@@ -8,11 +8,15 @@ angular.module('BS.rooms.room',[
 
   $scope.newPost = {};
 
+  $scope.upvoted = {};
+
   $scope.room = room.get($stateParams.roomId);
 
   $scope.users = room.users.get($stateParams.roomId);
 
   $scope.posts = room.posts.get($stateParams.roomId);
+
+  $scope.votes = room.votes.get($stateParams.roomId);
 
   $scope.addUser = function(){
     room.users.add($scope.you).then(function(userId){
@@ -27,11 +31,13 @@ angular.module('BS.rooms.room',[
     });
   };
 
+  $scope.addVote = function(postId) {
+    room.votes.add($scope.you.id, postId).then(function(voteId) {
+      $scope.upvoted = { postId: true };
+    });
+  };
+
 }])
-
-.factory('room',['Rooms','Users','Posts',function(Rooms,Users,Posts){
-
-  var room;
 
   var users;
 
