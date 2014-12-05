@@ -25,6 +25,16 @@ angular.module('BS.rooms.room',[
     });
   };
 
+  if ($scope.login.username){
+    $scope.you.name = $scope.login.username;
+    $scope.addUser();
+  } else {
+    $scope.$on('loggedIn',function(){
+      $scope.you.name = $scope.login.username;
+      $scope.addUser();
+    });
+  }
+
   $scope.addPost = function(formIsValid){
     room.posts.add($scope.you.id,$scope.newPost).then(function(postId){
       $scope.newPost = {userId:$scope.newPost.userId};
