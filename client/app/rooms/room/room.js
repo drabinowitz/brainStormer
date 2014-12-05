@@ -35,6 +35,9 @@ angular.module('BS.rooms.room',[
     room.votes.add($scope.you.id, postId).then(function(voteId) {
       $scope.upvoted = { postId: true };
     });
+    var postPlace = $scope.posts.$indexFor(postId);
+    $scope.posts[postPlace].votes++;
+    $scope.posts.$save(postPlace);
   };
 
 }])

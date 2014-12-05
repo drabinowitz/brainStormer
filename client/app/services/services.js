@@ -59,6 +59,7 @@ angular.module('BS.services', ['firebase'])
 
   var add = function(postInfo) {
     // postInfo should have userId and body
+    postInfo.votes = 0;
     return posts.$add(postInfo)
     .then(function(newChildRef) {
       return newChildRef.key();
