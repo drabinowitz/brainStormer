@@ -39,9 +39,12 @@ angular.module('BS.rooms.room',[
 
 }])
 
-  var users;
+.factory('room',['Rooms','Users','Posts','Votes',function(Rooms,Users,Posts,Votes){
 
-  var posts;
+  var room,
+      users,
+      posts,
+      vote;
 
   return {
     get:function(roomId){
@@ -65,6 +68,17 @@ angular.module('BS.rooms.room',[
       add: function(userId, post) {
         post.userId = userId;
         return Posts.add(post);
+      }
+    },
+
+    votes: {
+      get: function(roomId) {
+        return Votes.get(roomId);
+      },
+      add: function(userId, postId) {
+        vote.userId = userId;
+        vote.postId = postId;
+        return Votes.add(vote);
       }
     }
   };
