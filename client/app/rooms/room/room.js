@@ -32,9 +32,8 @@ angular.module('BS.rooms.room',[
   };
 
   $scope.addVote = function(postId) {
-    room.votes.add($scope.you.id, postId).then(function(voteId) {
-      $scope.upvoted[postId] = true;
-    });
+    $scope.upvoted[postId] = true;
+    room.votes.add($scope.you.id, postId);
     var postPlace = $scope.posts.$indexFor(postId);
     $scope.posts[postPlace].votes++;
     $scope.posts.$save(postPlace);
